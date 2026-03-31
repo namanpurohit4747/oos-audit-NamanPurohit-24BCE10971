@@ -1,196 +1,107 @@
-# oos-audit-NamanPurohit-24BCE10971
-Linux Kernel Open Source Audit Project
-Open Source Software Audit
+# Project README
 
- Student Details
+## Student Details
 
-* Name:Naman Purohit
-* Roll Number: 24BCE10971
-* Slot:B22
+- Name: Naman Purohit
+- Registration Number: 24BCE10971
+- Chosen Software: Linux Kernel (system audit scripts with basic package and file checks)
 
+## Project Overview
 
+This repository contains 5 shell scripts for Linux system auditing and reporting:
 
- Chosen Software
+1. `Script1.sh` - System Identity Report
+2. `Script2.sh` - Package Inspector
+3. `Script3.sh` - Disk Auditor
+4. `Script4.sh` - Log Analyzer
+5. `Script5.sh` - Manifesto Generator
 
-Software: Linux Kernel
-License: GNU General Public License (GPL)
+## Script Descriptions
 
-Description
+### `Script1.sh` - System Identity Report
+- Prints system environment details: distribution, kernel version, user name, home directory, uptime, date.
+- Includes a static `STUDENT_NAME` and `SOFTWARE_CHOICE` fields for documentation.
 
-Linux Kernel is the core part of the Linux operating system. It manages the hardware, performs tasks, manages the memory, and connects the software with the hardware.
+### `Script2.sh` - Package Inspector
+- Checks whether `linux-image-generic` is installed via `dpkg -l`.
+- Prints package status and details if found.
+- Contains a `case` block to explain knowledge about several packages.
 
+### `Script3.sh` - Disk Auditor
+- Inspects predefined directories: `/etc`, `/var/log`, `/home`, `/usr/bin`, `/tmp`.
+- Prints permission, owner/group, size for each existing directory.
+- Reports presence of `/boot` for kernel file environment.
 
-Scripts Overview
+### `Script4.sh` - Log Analyzer
+- Accepts log file path as first arg and keyword as second arg (default: `error`).
+- Counts occurrences and shows last 5 matching lines.
 
-Script 1: System Identity Report
+### `Script5.sh` - Manifesto Generator
+- Interactive script that asks 3 questions.
+- Writes a short manifesto to `manifesto_<username>.txt`.
 
-File:`Script1.sh`
+## Dependencies
 
-Description
+- Linux operating system
+- Bash shell (`/bin/bash`)
+- `coreutils` (`uname`, `grep`, `cut`, `tr`, `awk`, `ls`, `du`, `date`, etc.)
+- `dpkg` (Debian-based package manager command used by `Script2.sh`)
 
-This script generates a report about the system. It includes the following:
+## Usage Instructions (Linux)
 
-* Name of the Linux distribution
-* Version of the kernel
-* Name of the current user
-* Home directory
-* Time the system has been running
-* Current date
+1. Open terminal in the repository directory:
 
-Purpose
+```bash
+cd /path/to/your/repo/copy
+cd c:/vm-share/Scripts
+```
 
-This script provides a quick view of the system and its environment.
+2. Make scripts executable if not already:
 
-
-
-Script 2: Package Inspector
-
-File:`Script2.sh`
-
-Description
-
-This script:
-
-* Checks if the package `linux-image-generic` is installed
-* Displays the package details if it is installed
-* Describes the package
-
-Purpose
-
-This script inspects if important packages are installed. It also describes the packages.
-
-
-
-Script 3: Disk Auditor
-
-File:`Script3.sh`
-
-Description
-
-This script:
-
-* Checks the important files in the `/etc`, `/var/log`, `/home`, etc.
-* Shows the ownership of the files and the group to which the files belong
-* Checks if the `/boot` folder is present
-
-Purpose
-
-This script monitors the important files on the system. It also monitors the space being used.
-
-
-
-Script 4: Log Analyzer
-
-File: `Script4.sh`
-
-Description
-
-* Takes a log file as input
-* Searches for a keyword (defaults to "error")
-* Displays the count of the keyword found
-* Displays the last 5 lines of the file that contain the keyword
-
-Purpose
-
-This script is meant to help look through some logs to spot any problems or errors that might have occurred.
-
-
-
- Script 5: Manifesto Generator
-
-File: `Script5.sh`
-
-Description
-
-* Prompts the user for information:
-* What tool they use every day
-* What freedom means to the user
-* What they want to achieve in the future
-* Creates a text file that contains a personal open-source manifesto
-
- Purpose
-
-This script is meant to help users think about the philosophy of open-source software.
-
- How to Run the Scripts on Linux
-
- Step 1: Open Terminal
-
-Use the following keyboard combination:
-
-bash
-Ctrl + Alt + T
-
-
- Step 2: Navigate to Script Directory
-
-bash
-cd /C:/vm-share/Scripts
-
-Step 3: Give Execution Permission
-
-bash
+```bash
 chmod +x Script1.sh Script2.sh Script3.sh Script4.sh Script5.sh
+```
 
+3. Run each script:
 
-Step 4: Run Scripts
+- `Script1.sh`
 
-Script 1
-
-bash
+```bash
 ./Script1.sh
+```
 
+- `Script2.sh`
 
-Script 2
-
-bash
+```bash
 ./Script2.sh
+```
 
+- `Script3.sh`
 
-Script 3
-
-bash
+```bash
 ./Script3.sh
+```
 
+- `Script4.sh` (example with file and optional keyword):
 
+```bash
+./Script4.sh /var/log/syslog error
+```
 
+- `Script5.sh`:
 
-Script 4
-
-bash
-./Script4.sh /var/lo
-g/syslog error
-
-
-Script 5
-
-bash
+```bash
 ./Script5.sh
+```
 
+4. Check output file for `Script5.sh`:
 
+```bash
+cat manifesto_$(whoami).txt
+```
 
+## Notes
 
-Dependencies
-
-These scripts depend on various Linux utilities, which should come pre-installed on most Linux distributions:
-
-* bash
-* uname
-* grep
-* awk
-* du
-* dpkg
-* whoami
-* date
-
-
-
-Notes
-
-* Be sure you have sufficient privileges to access system directories and log files.
-* Scripts may require 'sudo' privileges depending on your system.
-
-
-Conclusion
-
-This project has demonstrated how Linux scripting can be used in a variety of ways, including system checks, package checks, disk checks, log checks, and open-source values. It has given a brief overview of how shell scripting can be utilized in a Linux system.
+- `Script4.sh` requires a valid log file path.
+- `Script2.sh` currently checks only `linux-image-generic`; you can modify `${PACKAGE}` if needed.
+- All scripts are designed for GNU/Linux environments.
