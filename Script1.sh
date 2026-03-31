@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script 1: System Identity Report
-# Author: Your Name
+# Author: NamanPurohit_24BCE10971
 
 STUDENT_NAME="Naman_Purohit_24BCE10971"
 SOFTWARE_CHOICE="Linux Kernel"
